@@ -1,0 +1,40 @@
+<html ng-app="toDoList">
+<head>
+	<meta charset="UTF-8">
+	<title>To Do List</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-messages.js"></script>
+	<script src="js/controller/toDoListCtrl.js"></script>
+</head>
+<body ng-controller="toDoListCtrl">
+
+	<div class="form-list">
+		<h1>{{name}}</h1>
+		<div>
+	    	<form name="newTask">
+				<input class="input-text" ng-model="task.description" type="text" name="task" placeholder="Nova Tarefa" />
+				<button class="btn" ng-click="adicionarTarefa(task)" ng-disabled="!task.description">Adicionar Tarefa</button>
+			</form>
+		</div>
+		<progress value="{{completedTasks + 70}}" max="100" style="width: 1000px">100</progress>
+		<p style="text-align: center">Tarefas completas: {{completedTasks}}%</p>
+		<table class="table">
+			<tr>
+				<th>Completa(s)</th>
+				<th>Tarefa(s)</th>
+				<th>Remover</th>
+			</tr>
+			<tr ng-class="{completed: task.selectToComplete, removed: task.selectToRemove}" ng-repeat="task in tasks">
+				<td><input type="checkbox" ng-model="task.selectToComplete"/></td>
+				<td>{{task.description}}</td>
+				<td><input type="checkbox" ng-model="task.selectToRemove"/></td>
+			</tr>
+		</table>
+		<button ng-class="" class="btn remove-btn" ng-click="removerTarefa(tasks)" ng-disabled="!taskToRemove(tasks)">Remover Tarefa(s)</button>
+	</div>
+
+	
+</body>
+</html>

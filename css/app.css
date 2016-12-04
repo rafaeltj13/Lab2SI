@@ -1,0 +1,30 @@
+.form-list {
+	width: 1000px;
+	text-align: left;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+h1 {
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+.completed {
+	background-color: #809fff;
+	font-weight: bold;
+}
+.removed {
+	background-color: red;
+	font-weight: bold;
+}
+.remove-btn {
+	background-color: red;
+	margin-left: 760px;
+}
+.btn{
+	height: 40px;
+}
+.input-text{
+	margin-right: 10px;
+	height: 38px;
+}
