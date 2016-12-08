@@ -4,8 +4,8 @@ angular.module("toDoList", []).controller("toDoListCtrl", function ($scope) {
 
 	myScope.name = "To Do List";
 	myScope.taskName = "Tarefa";
-	myScope.completedTasks = 0;
-	//myScope.allTasks = myScope.tasks.length;
+	myScope.percentCompletedTasks = 0;
+	
 	myScope.tasks = [
 		{description:"Fazer o Lab"},
 		{description:"Estudar"},
@@ -27,5 +27,19 @@ angular.module("toDoList", []).controller("toDoListCtrl", function ($scope) {
 		return tasks.some(function (task) {
 			return task.selectToRemove;
 		});
+	};
+
+	myScope.calculateProgress = function() {
+		
+		var total = 0;
+		
+		for(var i=0; i < myScope.tasks.length; i++) {
+				
+			if(myScope.tasks[i].selectToComplete){
+				total++;
+			}
+		}
+		
+		myScope.percentCompletedTasks = total / myScope.tasks.length * 100;
 	};
 });
