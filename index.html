@@ -10,7 +10,7 @@
 </head>
 <body ng-controller="toDoListCtrl">
 
-	<div class="form-list">
+	<!--div class="form-list">
 		<h1>{{name}}</h1>
 		<div>
 	    	<form name="newTask">
@@ -23,7 +23,7 @@
 		<div class="progress">
 				<div ng-model="progresso" class="progress-bar progress-bar-success completed" role="progressbar" aria-valuenow="40"
 				aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( percentCompletedTasks + '%' ) }">
-				Tarefas completas: :{{percentCompletedTasks}}%
+				Tarefas completas: {{percentCompletedTasks}}%
 				</div>
 		</div>
 		<table class="table">
@@ -41,8 +41,36 @@
 		<button ng-class="" class="btn remove-btn" ng-click="removerTarefa(tasks) || calculateProgress()" ng-disabled="!taskToRemove(tasks)">
 			Remover Tarefa(s)
 		</button>
+	</div-->
+	<div class="form-list">
+		<h1>{{name}}</h1>
+		<table class="table">
+			<tr data-ng-repeat="list in taskList">
+				<td>
+					<strong>{{ list.description }}</strong><br/>
+					<div class="tarefa" data-ng-repeat="task in list.tasks">
+						> {{ task.taskDescription }}:
+						<div class="tarefa" data-ng-repeat="subTask in task.subTasks">
+							- {{ subTask.subTaskDescription }} 
+						</div>
+						<div>
+							<input class="input-subTask" ng-model="subTask.subTaskDescription" type="text" name="subTaskBtn" placeholder="Nova Sub Tarefa">
+							<button class="subTask-btn" ng-click="addSubTask(subTask.subTaskDescription, task)" ng-disabled="!subTask.subTaskDescription">Adicionar Sub-Tarefa</button>
+						</div>
+					</div>
+					<div>
+						<input class="input-task" ng-model="task.taskDescription" type="text" name="taskBtn" placeholder="Nova Tarefa">
+						<button class="task-btn" ng-click="addTask(task.taskDescription, list)" ng-disabled="!task.taskDescription">Adicionar Tarefa</button>
+					</div>
+				</td>
+			</tr>
+			<td></td>
+		</table>
+		<div>
+			<input ng-model="newTaskList.description" class="input-taskList" type="text"
+			 placeholder="Nova Lista de Tarefa">
+			<button class="" ng-click="addTaskList(newTaskList.description)" ng-disabled="!newTaskList.description">Adicionar Lista de Tarefas</button>
+		</div>
 	</div>
-
-	
 </body>
 </html>

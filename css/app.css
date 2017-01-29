@@ -5,7 +5,7 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-h1 {
+.h1 {
 	margin-bottom: 30px;
 	font-weight: bold;
 }
@@ -22,9 +22,32 @@ h1 {
 	margin-left: 760px;
 }
 .btn{
-	height: 40px;
+	height: 32px;
 }
 .input-text{
 	margin-right: 10px;
 	height: 38px;
+}
+.input-subTask{
+	height: 25px;
+	margin-left: 30px;
+	margin-bottom: 15px;
+}
+.input-task{
+	height: 25px;
+	margin-left: 30px;
+}
+.input-taskList{
+	margin-bottom: 30px;
+}
+.tarefa{
+	margin-left: 30px;
+}
+.subTask-btn{
+	margin-left: 10px;
+	margin-top: 5px;
+}
+.task-btn{
+	margin-left: 10px;
+	margin-top: 15px;
 }
