@@ -57,11 +57,13 @@
 							<input class="input-subTask" ng-model="subTask.subTaskDescription" type="text" name="subTaskBtn" placeholder="Nova Sub Tarefa">
 							<button class="subTask-btn" ng-click="addSubTask(subTask.subTaskDescription, task)" ng-disabled="!subTask.subTaskDescription">Adicionar Sub-Tarefa</button>
 						</div>
+						<button ng-click="removeTask($index, list)" class="btn">Excluir tarefa</button>
 					</div>
 					<div>
 						<input class="input-task" ng-model="task.taskDescription" type="text" name="taskBtn" placeholder="Nova Tarefa">
 						<button class="task-btn" ng-click="addTask(task.taskDescription, list)" ng-disabled="!task.taskDescription">Adicionar Tarefa</button>
 					</div>
+					<button ng-click="removeTaskList($index)" class="btn">Excluir lista de tarefas</button>
 				</td>
 			</tr>
 			<td></td>

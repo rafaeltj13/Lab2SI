@@ -69,6 +69,15 @@ angular.module("toDoList", []).controller("toDoListCtrl", function ($scope) {
 		task.subTasks.push(newSubTask);
 	};
 
+	myScope.removeTaskList = function (taskListIndex){
+		myScope.taskList.splice(taskListIndex, 1);
+	};
+
+	myScope.removeTask = function (taskIndex, taskList){
+		console.log(taskList)
+		taskList.tasks.splice(taskIndex, 1);
+	};
+
 	myScope.adicionarTarefa = function (task) {
 		myScope.tasks.push(angular.copy(task));
 		delete myScope.task;
