@@ -1,16 +1,12 @@
-angular.module("toDoList", []).controller("toDoListCtrl", function ($scope) {
+angular.module("toDoList")
+
+.controller("toDoListCtrl", function ($scope) {
 
 	var myScope = $scope;
 
 	myScope.name = "To Do List";
 	myScope.taskName = "Tarefa";
 	myScope.percentCompletedTasks = 0;
-	
-	myScope.tasks = [
-		{description:"Fazer o Lab"},
-		{description:"Estudar"},
-		{description:"Fazer exercícios"}
-	];
 
 	myScope.taskList = [
 		{
@@ -74,25 +70,19 @@ angular.module("toDoList", []).controller("toDoListCtrl", function ($scope) {
 	};
 
 	myScope.removeTask = function (taskIndex, taskList){
-		console.log(taskList)
 		taskList.tasks.splice(taskIndex, 1);
 	};
 
-	myScope.adicionarTarefa = function (task) {
-		myScope.tasks.push(angular.copy(task));
-		delete myScope.task;
+	myScope.showTasks = function (taskIndex){
+		myScope.taskList[taskIndex].show = !(myScope.taskList[taskIndex].show);
 	};
-	myScope.removerTarefa = function (tasks) {
-		myScope.tasks = tasks.filter(function (task) {
-			if(!task.selectToRemove){
-				return task;
-			}
-		});
+
+	myScope.completeTask = function (task){
+		task.completed = true;
 	};
-	myScope.taskToRemove = function (tasks) {
-		return tasks.some(function (task) {
-			return task.selectToRemove;
-		});
+
+	myScope.openTask = function (task){
+		task.completed = false;
 	};
 
 	myScope.calculateProgress = function() {

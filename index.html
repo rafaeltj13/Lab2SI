@@ -4,75 +4,21 @@
 	<title>To Do List</title>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+	<h1>Listas de tarefas</h1>
+	<ul>
+	  <li><a ui-sref="home">Home</a></li>
+	  <li><a ui-sref="edit">Edição de tarefas</a></li>
+	  <li><a ui-sref="contact">Contato</a></li>
+	</ul>
+
+	<div ui-view></div>
+
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-messages.js"></script>
+	<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="app.js"></script>
 	<script src="js/controller/toDoListCtrl.js"></script>
-</head>
-<body ng-controller="toDoListCtrl">
-
-	<!--div class="form-list">
-		<h1>{{name}}</h1>
-		<div>
-	    	<form name="newTask">
-				<input class="input-text" ng-model="task.description" type="text" name="task" placeholder="Nova Tarefa" />
-				<button class="btn" ng-click="adicionarTarefa(task) || calculateProgress()" ng-disabled="!task.description">
-					Adicionar Tarefa
-				</button>
-			</form>
-		</div>
-		<div class="progress">
-				<div ng-model="progresso" class="progress-bar progress-bar-success completed" role="progressbar" aria-valuenow="40"
-				aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( percentCompletedTasks + '%' ) }">
-				Tarefas completas: {{percentCompletedTasks}}%
-				</div>
-		</div>
-		<table class="table">
-			<tr>
-				<th>Completa(s)</th>
-				<th>Tarefa(s)</th>
-				<th>Remover</th>
-			</tr>
-			<tr ng-class="{completed: task.selectToComplete, removed: task.selectToRemove}" ng-repeat="task in tasks">
-				<td><input type="checkbox" ng-model="task.selectToComplete" ng-change="calculateProgress()"/></td>
-				<td>{{task.description}}</td>
-				<td><input type="checkbox" ng-model="task.selectToRemove"/></td>
-			</tr>
-		</table>
-		<button ng-class="" class="btn remove-btn" ng-click="removerTarefa(tasks) || calculateProgress()" ng-disabled="!taskToRemove(tasks)">
-			Remover Tarefa(s)
-		</button>
-	</div-->
-	<div class="form-list">
-		<h1>{{name}}</h1>
-		<table class="table">
-			<tr data-ng-repeat="list in taskList">
-				<td>
-					<strong>{{ list.description }}</strong><br/>
-					<div class="tarefa" data-ng-repeat="task in list.tasks">
-						> {{ task.taskDescription }}:
-						<div class="tarefa" data-ng-repeat="subTask in task.subTasks">
-							- {{ subTask.subTaskDescription }} 
-						</div>
-						<div>
-							<input class="input-subTask" ng-model="subTask.subTaskDescription" type="text" name="subTaskBtn" placeholder="Nova Sub Tarefa">
-							<button class="subTask-btn" ng-click="addSubTask(subTask.subTaskDescription, task)" ng-disabled="!subTask.subTaskDescription">Adicionar Sub-Tarefa</button>
-						</div>
-						<button ng-click="removeTask($index, list)" class="btn">Excluir tarefa</button>
-					</div>
-					<div>
-						<input class="input-task" ng-model="task.taskDescription" type="text" name="taskBtn" placeholder="Nova Tarefa">
-						<button class="task-btn" ng-click="addTask(task.taskDescription, list)" ng-disabled="!task.taskDescription">Adicionar Tarefa</button>
-					</div>
-					<button ng-click="removeTaskList($index)" class="btn">Excluir lista de tarefas</button>
-				</td>
-			</tr>
-			<td></td>
-		</table>
-		<div>
-			<input ng-model="newTaskList.description" class="input-taskList" type="text"
-			 placeholder="Nova Lista de Tarefa">
-			<button class="" ng-click="addTaskList(newTaskList.description)" ng-disabled="!newTaskList.description">Adicionar Lista de Tarefas</button>
-		</div>
-	</div>
 </body>
 </html>

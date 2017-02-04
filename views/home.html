@@ -1,0 +1,17 @@
+<div>
+	<CENTER><h1>Lista de Tarefas</h1></CENTER>
+	<div data-ng-repeat="list in taskList">
+		<button class="btn" data-ng-click="showTasks($index)">{{list.description}}</button>
+		<div data-ng-repeat="task in list.tasks" ng-show="list.show">
+			<h4 class="btn">
+				{{task.taskDescription}}:
+				<span data-ng-repeat="subTask in task.subTasks">
+					{{ subTask.subTaskDescription }} / 
+				</span>
+			</h4>
+			---
+			<button class="btn" ng-click="completeTask(task)" ng-show="!task.completed">Concluir tarefa</button>
+			<button class="btn" ng-click="openTask(task)" ng-show="task.completed">Abrir tarefa</button>
+		</div>
+	</div>
+</div>
