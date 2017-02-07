@@ -7,10 +7,10 @@ angular.module("toDoList")
 	myScope.name = "To Do List";
 	myScope.taskName = "Tarefa";
 	myScope.percentCompletedTasks = 0;
-	myScope.taskList = {};
-	generateTaskList();
+	/*myScope.taskList = {};
+	generateTaskList();*/
 
-	/*myScope.taskList = [
+	myScope.taskList = [
 		{
 			description:"Fazer o Lab",
 			tasks: [
@@ -37,14 +37,37 @@ angular.module("toDoList")
 					}
 			]
 		}
-	];*/
+	];
 
-	function generateTaskList() {
+	myScope.checkTask = function (task){
+	    if(task.completed){
+	        return 'taskCompleted';
+	    }else{
+	        return 'taskOpen';
+	    }
+	};
+
+	myScope.checkList = function (list){
+        var validation = true;
+        for(var i=0; i < list.tasks.length; i++) {
+            if(!list.tasks[i].completed){
+        	    validation = false;
+      	    }
+        }
+
+        if(validation){
+            return 'taskCompleted';
+        }else{
+            return 'taskOpen';
+        }
+    };
+
+	/*function generateTaskList() {
 		RestService.find('http://localhost:8080/listaTarefas', function(response) {
 			myScope.taskList = response.data;
 			console.log(myScope.taskList[0]);
 		});
-	}
+	}*/
 
 	myScope.addTaskList = function (taskListName) {
 		var newTaskList = {description: taskListName};
@@ -56,9 +79,10 @@ angular.module("toDoList")
 		});
 	};
 
-	myScope.addTask = function (task, list) {
-		var newTask = {taskDescription: task, subTasks: []};
+	myScope.addTask = function (task, list, taskPriority) {
+		var newTask = {taskDescription: task, subTasks: [], priority: taskPriority};
 		list.tasks.push(newTask);
+		console.log(newTask);
 		//delete task.taskDescription;
 	};
 

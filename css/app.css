@@ -24,6 +24,18 @@
 .btn{
 	height: 32px;
 }
+.show-btn{
+    width: 800px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.show-tasks{
+    margin-left: 120px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .input-text{
 	margin-right: 10px;
 	height: 38px;
@@ -42,6 +54,9 @@
 }
 .tarefa{
 	margin-left: 30px;
+}
+.taskCompleted{
+    background-color: #00e600;
 }
 .subTask-btn{
 	margin-left: 10px;
@@ -73,3 +88,4 @@ li :hover:not(.active) {
 .active {
     background-color: #4CAF50;
 }
+=

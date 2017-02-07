@@ -17,7 +17,13 @@
 				</div>
 				<div>
 					<input class="input-task" ng-model="task.taskDescription" type="text" name="taskBtn" placeholder="Nova Tarefa"></input>
-					<button class="task-btn" ng-click="addTask(task.taskDescription, list)" ng-disabled="!task.taskDescription">Adicionar Tarefa</button>
+					<select ng-model="task.Priority">
+						<option value="">Prioridade</option>
+						<option value="3">Urgente</option>
+						<option value="2">Normal</option>
+						<option value="1">Nem ai</option>
+					</select>
+					<button class="task-btn" ng-click="addTask(task.taskDescription, list, task.Priority)" ng-disabled="!task.taskDescription">Adicionar Tarefa</button>
 				</div>
 				<button ng-click="removeTaskList($index)" class="btn">Excluir lista de tarefas</button>
 			</td>
