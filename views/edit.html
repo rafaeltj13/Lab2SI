@@ -7,23 +7,23 @@
 				<div class="tarefa" data-ng-repeat="task in list.tasks">
 					> {{ task.taskDescription }}:
 					<div class="tarefa" data-ng-repeat="subTask in task.subTasks">
-						- {{ subTask }} 
+						- {{ subTask.subTaskDescription }} 
 					</div>
 					<div>
 						<input class="input-subTask" ng-model="subTask.subTaskDescription" type="text" name="subTaskBtn" placeholder="Nova Sub Tarefa"></input>
-						<button class="subTask-btn" ng-click="addSubTask(subTask.subTaskDescription, task)" ng-disabled="!subTask.subTaskDescription">Adicionar Sub-Tarefa</button>
+						<button class="subTask-btn" ng-click="addSubTask(subTask.subTaskDescription, $index, list)" ng-disabled="!subTask.subTaskDescription">Adicionar Sub-Tarefa</button>
 					</div>
 					<button ng-click="removeTask($index, list)" class="btn">Excluir tarefa</button>
 				</div>
 				<div>
 					<input class="input-task" ng-model="task.taskDescription" type="text" name="taskBtn" placeholder="Nova Tarefa"></input>
 					<select ng-model="task.Priority">
-						<option value="">Prioridade</option>
-						<option value="3">Urgente</option>
-						<option value="2">Normal</option>
-						<option value="1">Nem ai</option>
+						<option value="">Urgência</option>
+						<option value="3">Alta</option>
+						<option value="2">Media</option>
+						<option value="1">Baixa</option>
 					</select>
-					<button class="task-btn" ng-click="addTask(task.taskDescription, list, task.Priority)" ng-disabled="!task.taskDescription">Adicionar Tarefa</button>
+					<button class="task-btn" ng-click="addTask(task.taskDescription, $index, task.Priority)" ng-disabled="!task.taskDescription">Adicionar Tarefa</button>
 				</div>
 				<button ng-click="removeTaskList($index)" class="btn">Excluir lista de tarefas</button>
 			</td>
@@ -35,4 +35,5 @@
 		placeholder="Nova Lista de Tarefa"></input>
 		<button class="" ng-click="addTaskList(newTaskList.description)" ng-disabled="!newTaskList.description">Adicionar Lista de Tarefas</button>
 	</div>
+	<button ng-click="removeAll()">Remover Tudo</button>
 </div>

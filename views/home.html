@@ -1,17 +1,23 @@
 <div class="form-list">
 	<CENTER><h1>Todas as listas de tarefas</h1></CENTER>
 	<div data-ng-repeat="list in taskList">
-		<button class="btn show-btn {{checkList(list)}}" data-ng-click="showTasks($index)">{{list.description}}</button>
+		<button class="btn show-btn {{checkList(list)}} normal-btn" data-ng-click="showTasks($index)">{{list.description}}</button>
 		<div data-ng-repeat="task in list.tasks" ng-show="list.show">
 			<h5 class="btn show-tasks {{checkTask(task)}}">
 				{{task.taskDescription}}:
 				<span data-ng-repeat="subTask in task.subTasks">
-					{{ subTask }} /
+					{{ subTask.subTaskDescription }} /
 				</span>
 			</h5>
 			---
-			<button class="btn" ng-click="completeTask(task)" ng-show="!task.completed">Concluir tarefa</button>
-			<button class="btn" ng-click="openTask(task)" ng-show="task.completed">Abrir tarefa</button>
+			<button class="btn normal-btn" ng-click="completeTask(task) || calculateProgress()" ng-show="!task.completed">Concluir tarefa</button>
+			<button class="btn normal-btn" ng-click="openTask(task) || calculateProgress()" ng-show="task.completed">Abrir tarefa</button>
 		</div>
 	</div>
+	<div class="progress">
+ 		<div ng-model="progresso" class="progress-bar progress-bar-success completed input-text" role="progressbar" aria-valuenow="40"
+ 		aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( percentCompletedTasks + '%' ) }">
+ 		Tarefas completas: {{percentCompletedTasks}}%
+ 		</div>
+ 	</div>
 </div>

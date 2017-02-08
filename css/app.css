@@ -10,7 +10,7 @@
 	font-weight: bold;
 }
 .completed {
-	background-color: #809fff;
+	background-color: #00e600;
 	font-weight: bold;
 }
 .removed {
@@ -23,6 +23,10 @@
 }
 .btn{
 	height: 32px;
+}
+.normal-btn{
+	height: 32px;
+	background-color: #bfbfbf;
 }
 .show-btn{
     width: 800px;
@@ -88,4 +92,3 @@ li :hover:not(.active) {
 .active {
     background-color: #4CAF50;
 }
-=
